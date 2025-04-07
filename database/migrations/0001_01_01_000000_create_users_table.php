@@ -11,13 +11,30 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('languages', function (Blueprint $table) {
+            $table->id()->primary();
+            $table->string('name')->unique();
+            $table->timestamps();
+        });
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('surname');
+            $table->string('mobile_number');
+            $table->char('id_number', 13);
             $table->string('email')->unique();
+            $table->date('birth_date');
+            $table->foreignId('language_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->timestamps();
+        });
+
+        Schema::create('interests', function (Blueprint $table) {
+            $table->id()->primary();
+            $table->string('name')->unique();
             $table->timestamps();
         });
 
@@ -25,6 +42,13 @@ return new class extends Migration
             $table->string('email')->primary();
             $table->string('token');
             $table->timestamp('created_at')->nullable();
+        });
+
+        Schema::create('user_interest', function (Blueprint $table) {
+            $table->id()->primary();
+            $table->foreignId('user_id');
+            $table->foreignId('interest_id');
+            $table->timestamps();
         });
 
         Schema::create('sessions', function (Blueprint $table) {
@@ -42,7 +66,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('languages');
         Schema::dropIfExists('users');
+        Schema::dropIfExists('interests');
+        Schema::dropIfExists('user_interest');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
     }
