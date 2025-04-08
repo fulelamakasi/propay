@@ -1,0 +1,11 @@
+<VirtualHost *:80>
+   ServerName propay.local
+   ServerAdmin webmaster@propay.local
+   DocumentRoot /home/fulela/workspace/propay/public
+
+   <Directory /home/fulela/workspace/propay>
+       AllowOverride All
+   </Directory>
+   ErrorLog ${APACHE_LOG_DIR}/error.log
+   CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
