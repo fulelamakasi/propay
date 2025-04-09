@@ -1,0 +1,51 @@
+<?php
+
+namespace App\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+use Illuminate\Support\Facades\Validator;
+
+
+class LoginController extends Controller
+{
+    public function login():View
+    {
+        return view('login');
+    }
+
+	public function logout()
+    {
+		Auth::logout(); // logging out user
+		return Redirect::to('/'); // redirection to login screen
+    }
+
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+    
+        if(Auth::attempt($credentials))
+        {
+            $request->session()->regenerate();
+            return redirect()->route('index')
+                ->withSuccess('You have successfully logged in!');
+        }
+    
+        return back()->withErrors([
+            'email' => 'Your provided credentials do not match our records.',
+        ])->onlyInput('email');
+    
+    }
+
+    public function register():View
+    {
+        return view('register');
+    }
+
+}

@@ -9,8 +9,9 @@ This project is a user management application for propay.
 - php8.3
 -
 cp env.example -> .env
-- CREATE DATABASE propay;
 
+- CREATE DATABASE propay;
+php artisan key:generate
 # Apache configuration
 
 
