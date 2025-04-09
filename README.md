@@ -21,7 +21,7 @@ php artisan key:generate
 
 # php artisan migrate
 # php artisan serve --host=127.0.0.1 --port=8000
-
+# php artisan db:seed
 
 # SET UP HOST SERVER UBUNTU 
 - sudo su
