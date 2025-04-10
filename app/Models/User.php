@@ -4,12 +4,13 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-use Carbon\Language;
+use App\Models\Language;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Facades\Hash;
+use App\Models\UserInterest;
 
 class User extends Authenticatable
 {
@@ -55,9 +56,13 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
-    public function language(): HasOne
+    public function user_interests(): HasMany
     {
-        return $this->HasOne(Language::class);
+        return $this->HasMany(UserInterest::class);
     }
 
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
 }

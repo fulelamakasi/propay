@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         // get all the users
-        $users = User::with('language')->all();
+        $users = User::with('language')->get();
 
         // load the view and pass the users
         return FacadesView::make('users.index')
@@ -94,6 +94,7 @@ class UserController extends Controller
         $user->surname = $request->surname;
         $user->mobile_number = $request->mobile_number;
         $user->id_number = $request->id_number;
+        // extract birth_date from ID number
         $user->email = $request->email;
         $user->birth_date = $request->birth_date;
         $user->language_id = $request->language_id;
