@@ -48,6 +48,7 @@ return new class extends Migration
             $table->id()->primary();
             $table->foreignId('user_id');
             $table->foreignId('interest_id');
+            $table->unique(['interest_id', 'user_id']);
             $table->timestamps();
         });
 

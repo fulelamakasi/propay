@@ -43,6 +43,11 @@ class LoginController extends Controller
     
     }
 
+    public function home():View
+    {
+        return view('welcome');
+    }
+
     public function register():View
     {
         return view('register');

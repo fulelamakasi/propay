@@ -12,9 +12,4 @@ class HomeController extends Controller
         return view('dashboard');
     }
 
-    public function home():View
-    {
-        return view('welcome');
-    }
-
 }
