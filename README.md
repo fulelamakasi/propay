@@ -14,7 +14,10 @@ cp env.example -> .env
 php artisan key:generate
 # Apache configuration
 
-
+# env
+# QUEUE_CONNECTION=database
+# terminal 
+# php artisan queue:work
 
 # Setup 
 # username (admin@propay.com => 12345678), (test@propay.com => 12345678)

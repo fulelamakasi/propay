@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\Support\Facades\Hash;
+use App\Events\EmailConfirmationEvent;
 
 class UserController extends Controller
 {
@@ -41,6 +42,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $user = new User;
+        $userByEmail = User::getUserByEmail($request->email);
 
         if (!$this->validateSAID($request->id_number)) {
             $languages = Language::all();
@@ -50,7 +52,7 @@ class UserController extends Controller
                     ->with('languages', $languages);
         }
 
-        if (User::getUserByEmail($request->email)) {
+        if (count($userByEmail) != 0) {
             $languages = Language::all();
             Session::flash('message', 'Email already registered!');
 
@@ -71,6 +73,11 @@ class UserController extends Controller
         $user->password = Hash::make($password);
 
         $user->save();
+
+        $message = "Your confirmation code is: 123456";
+        $email = "user@example.com";
+        
+        event(new EmailConfirmationEvent($message, $email));
 
         Session::flash('message', 'Successfully created User!');
 
@@ -122,7 +129,7 @@ class UserController extends Controller
                 ->with('languages', $languages);
         }
 
-        if ($userByEmail && $userByEmail->id != $user->id) {
+        if (count($userByEmail) != 0 && ($userByEmail->id != $user->id)) {
             Session::flash('message', 'Email already exists!');
 
             return FacadesView::make('users.edit')
