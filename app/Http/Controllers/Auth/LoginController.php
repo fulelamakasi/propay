@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 
 class LoginController extends Controller
@@ -33,8 +33,10 @@ class LoginController extends Controller
         if(Auth::attempt($credentials))
         {
             $request->session()->regenerate();
-            return redirect()->route('dashboard')
-                ->withSuccess('You have successfully logged in!');
+
+            Session::flash('message', 'You have successfully logged in!');
+
+            return redirect()->route('dashboard');
         }
     
         return back()->withErrors([
