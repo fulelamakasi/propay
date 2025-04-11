@@ -9,18 +9,22 @@ This project is a user management application for propay.
 - php8.3
 -
 cp env.example -> .env
-- CREATE DATABASE propay;
 
+- CREATE DATABASE propay;
+php artisan key:generate
 # Apache configuration
 
-
+# env
+# QUEUE_CONNECTION=database
+# terminal 
+# php artisan queue:work
 
 # Setup 
-
+# username (admin@propay.com => 12345678), (test@propay.com => 12345678)
 
 # php artisan migrate
 # php artisan serve --host=127.0.0.1 --port=8000
-
+# php artisan db:seed
 
 # SET UP HOST SERVER UBUNTU 
 - sudo su
