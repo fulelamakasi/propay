@@ -44,7 +44,7 @@ return new class extends Migration
             $table->timestamp('created_at')->nullable();
         });
 
-        Schema::create('user_interest', function (Blueprint $table) {
+        Schema::create('user_interests', function (Blueprint $table) {
             $table->id()->primary();
             $table->foreignId('user_id');
             $table->foreignId('interest_id');

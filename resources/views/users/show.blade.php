@@ -21,7 +21,17 @@
 <h1>Showing {{ $user->name }}</h1>
 
     <div class="jumbotron text-center">
-        <h2>{{ $user->name }}</h2>
+        <h2>{{ $user->name }} {{ $user->surname }}</h2>
+        <p>
+        <a class="btn btn-small btn-info" href="{{ URL::to('user_interest/' . $user->id . '/byUser') }}">View User Interests</a> <br/>
+            <strong>ID Number:</strong> {{ $user->id_number }}<br>
+            <strong>Birth Date:</strong> {{ $user->birth_date }}<br>
+            <strong>Email:</strong> {{ $user->email }}<br>
+            <strong>Mobile Number:</strong> {{ $user->mobile_number }}<br>
+            <strong>Language:</strong> {{ $user->language->name }}<br>
+            <strong>Created:</strong> {{ $user->created_at }}<br>
+            <strong>Updated:</strong> {{ $user->updated_at }}<br>
+        </p>
     </div>
 
 </div>

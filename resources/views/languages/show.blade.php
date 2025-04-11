@@ -22,6 +22,10 @@
 
     <div class="jumbotron text-center">
         <h2>{{ $language->name }}</h2>
+        <p>
+            <strong>Created:</strong> {{ $language->created_at }}<br>
+            <strong>Updated:</strong> {{ $language->updated_at }}<br>
+        </p>
     </div>
 
 </div>

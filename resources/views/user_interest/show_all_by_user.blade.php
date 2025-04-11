@@ -18,7 +18,7 @@
     </ul>
 </nav>
 
-<h1>All the User Interests</h1>
+<h1>User Interests</h1>
 
 <!-- will be used to show any messages -->
 @if (Session::has('message'))

@@ -56,6 +56,17 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
+    public static function getUserByEmail(string $email)
+    {
+        $user = self::where('email', $email)->get();
+
+        if ($user) {
+            return $user;
+        }
+
+        return false;
+    }
+
     public function user_interests(): HasMany
     {
         return $this->HasMany(UserInterest::class);

@@ -22,6 +22,10 @@
 
     <div class="jumbotron text-center">
         <h2>{{ $interest->name }}</h2>
+        <p>
+            <strong>Created:</strong> {{ $interest->created_at }}<br>
+            <strong>Updated:</strong> {{ $interest->updated_at }}<br>
+        </p>
     </div>
 
 </div>
