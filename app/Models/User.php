@@ -67,6 +67,17 @@ class User extends Authenticatable
         return false;
     }
 
+    public static function getUserByEmailAndId(string $email, int $id)
+    {
+        $user = self::whereKeyNot($id)->where('email', $email)->get();
+
+        if ($user) {
+            return $user;
+        }
+
+        return false;
+    }
+
     public function user_interests(): HasMany
     {
         return $this->HasMany(UserInterest::class);
