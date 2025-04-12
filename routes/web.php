@@ -9,7 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInterestController;
 use App\Http\Middleware\EnsureAuthIsValid;
 
-// Route::withoutMiddleware([EnsureAuthIsValid::class])->group(function () {
+Route::withoutMiddleware([EnsureAuthIsValid::class])->group(function () {
     Route::get('/', function () {
         return view('welcome');
     });
@@ -19,9 +19,9 @@ use App\Http\Middleware\EnsureAuthIsValid;
     Route::get('/login',[LoginController::class,'login'])->name('login');
     Route::get('/logout',[LoginController::class,'logout'])->name('logout');
     Route::get('/register',[LoginController::class,'register'])->name('register');
-// });
+});
 
-// Route::middleware([EnsureAuthIsValid::class])->group(function () {
+Route::middleware([EnsureAuthIsValid::class])->group(function () {
     Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
     Route::get('/interests',[InterestController::class,'index']);
     Route::get('/interests/create',[InterestController::class,'create']); 
@@ -55,5 +55,5 @@ use App\Http\Middleware\EnsureAuthIsValid;
     Route::get('/users/{id}/edit',[UserController::class,'edit']);
     Route::put('/users/{id}',[UserController::class,'update']);
     Route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy');
-// });
+});
 
