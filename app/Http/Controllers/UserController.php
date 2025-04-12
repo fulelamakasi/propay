@@ -70,7 +70,7 @@ class UserController extends Controller
 
         $password = strtoupper(substr($request->surname, 0, 2)) . substr($request->birth_date, 0, 4) . substr($request->id_number, -1, 3);
 
-        $user->password = Hash::make($password);
+        $user->password = $password;
 
         $user->save();
 
@@ -145,6 +145,10 @@ class UserController extends Controller
                 ->with('languages', $languages);
         }
 
+        if (!empty($request->confirm_password)) {
+            $user->password = $request->password;
+        }
+
         $user->name = $request->name;
         $user->surname = $request->surname;
         $user->mobile_number = $request->mobile_number;
@@ -152,7 +156,6 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->birth_date = $this->extractBirthdateFromID($request->id_number);
         $user->language_id = $request->language_id;
-        $user->password = Hash::make($request->password);
         $user->save();
 
         Session::flash('message', 'Successfully updated User!');
