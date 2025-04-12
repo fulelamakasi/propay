@@ -21,7 +21,7 @@ class UserInterestSeeder extends Seeder
             $interests = Interest::all();
 
             foreach($interests as $interest) {
-                DB::table('user_interest')->insert([
+                DB::table('user_interests')->insert([
                     'user_id' => $user->id,
                     'interest_id' => $interest->id,
                 ]);
