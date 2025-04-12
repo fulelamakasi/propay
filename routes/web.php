@@ -21,7 +21,7 @@ Route::withoutMiddleware([EnsureAuthIsValid::class])->group(function () {
     Route::get('/register',[LoginController::class,'register'])->name('register');
 });
 
-// Route::middleware([EnsureAuthIsValid::class])->group(function () {
+Route::middleware([EnsureAuthIsValid::class])->group(function () {
     Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
     Route::get('/interests',[InterestController::class,'index']);
     Route::get('/interests/create',[InterestController::class,'create']); 
@@ -55,5 +55,5 @@ Route::withoutMiddleware([EnsureAuthIsValid::class])->group(function () {
     Route::get('/users/{id}/edit',[UserController::class,'edit']);
     Route::put('/users/{id}',[UserController::class,'update']);
     Route::delete('/users/{id}',[UserController::class,'destroy'])->name('users.destroy');
-// });
+});
 
