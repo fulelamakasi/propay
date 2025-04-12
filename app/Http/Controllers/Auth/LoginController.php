@@ -30,7 +30,10 @@ class LoginController extends Controller
             'password' => 'required'
         ]);
 
-        if(Auth::attempt($credentials))
+        $email = $request->email;
+        $password = $request->password;
+
+        if(Auth::attempt(['email' => $email, 'password' => $password]))
         {
             $request->session()->regenerate();
 
@@ -41,7 +44,7 @@ class LoginController extends Controller
     
         Session::flash('message', 'Your provided credentials do not match our records.');
 
-        return back()->onlyInput('email');
+        return redirect()->back();
     
     }
 
