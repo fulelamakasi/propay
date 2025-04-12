@@ -29,7 +29,7 @@ class LoginController extends Controller
             'email' => 'required|email',
             'password' => 'required'
         ]);
-    
+
         if(Auth::attempt($credentials))
         {
             $request->session()->regenerate();
@@ -39,9 +39,9 @@ class LoginController extends Controller
             return redirect()->route('dashboard');
         }
     
-        return back()->withErrors([
-            'email' => 'Your provided credentials do not match our records.',
-        ])->onlyInput('email');
+        Session::flash('message', 'Your provided credentials do not match our records.');
+
+        return back()->onlyInput('email');
     
     }
 

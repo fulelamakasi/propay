@@ -118,7 +118,7 @@ class UserController extends Controller
     public function update(Request $request, string $id)
     {
         $user = User::with('language')->find($id);
-        $userByEmail = User::getUserByEmail($request->email);
+        $userByEmail = User::getUserByEmailAndId($request->email, $id);
         $languages = Language::all();
 
         if (!$this->validateSAID($request->id_number)) {
