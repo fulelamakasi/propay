@@ -9,17 +9,15 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserInterestController;
 use App\Http\Middleware\EnsureAuthIsValid;
 
-Route::withoutMiddleware([EnsureAuthIsValid::class])->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    });
-    
-    Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
-    Route::get('/home',[LoginController::class,'home'])->name('home');
-    Route::get('/login',[LoginController::class,'login'])->name('login');
-    Route::get('/logout',[LoginController::class,'logout'])->name('logout');
-    Route::get('/register',[LoginController::class,'register'])->name('register');
+Route::get('/', function () {
+    return view('welcome');
 });
+
+Route::post('/authenticate', [LoginController::class, 'authenticate'])->name('authenticate');
+Route::get('/home',[LoginController::class,'home'])->name('home');
+Route::get('/login',[LoginController::class,'login'])->name('login');
+Route::get('/logout',[LoginController::class,'logout'])->name('logout');
+Route::get('/register',[LoginController::class,'register'])->name('register');
 
 Route::middleware([EnsureAuthIsValid::class])->group(function () {
     Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard');
