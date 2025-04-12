@@ -9,11 +9,14 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('languages') }}">language Alert</a>
+        <a class="navbar-brand" href="{{ URL::to('dashboard') }}">Propay</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('languages') }}">View All languages</a></li>
-        <li><a href="{{ URL::to('languages/create') }}">Create a language</a>
+        <li><a href="{{ URL::to('languages') }}">View All Languages</a></li>
+        <li><a href="{{ URL::to('languages/create') }}">Create a Language</a>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ route('logout') }}" class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"> Logout</a></li>
     </ul>
 </nav>
 

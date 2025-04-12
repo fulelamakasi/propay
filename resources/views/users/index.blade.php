@@ -10,15 +10,18 @@
 
 <nav class="navbar navbar-inverse">
     <div class="navbar-header">
-        <a class="navbar-brand" href="{{ URL::to('users') }}">user Alert</a>
+        <a class="navbar-brand" href="{{ URL::to('dashboard') }}">Propay</a>
     </div>
     <ul class="nav navbar-nav">
-        <li><a href="{{ URL::to('users') }}">View All users</a></li>
-        <li><a href="{{ URL::to('users/create') }}">Create a user</a>
+    <li><a href="{{ URL::to('users') }}">View All Users</a></li>
+    <li><a href="{{ URL::to('users/create') }}">Create a User</a>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="{{ route('logout') }}" class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"> Logout</a></li>
     </ul>
 </nav>
 
-<h1>All the users</h1>
+<h1>All the Users</h1>
 
 <!-- will be used to show any messages -->
 @if (Session::has('message'))
