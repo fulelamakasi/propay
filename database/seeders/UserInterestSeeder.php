@@ -24,6 +24,7 @@ class UserInterestSeeder extends Seeder
                 DB::table('user_interests')->insert([
                     'user_id' => $user->id,
                     'interest_id' => $interest->id,
+                    'created_at' => date('Y-m-d H:i:s'),
                 ]);
             }
         }

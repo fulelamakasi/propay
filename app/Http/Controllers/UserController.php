@@ -158,6 +158,10 @@ class UserController extends Controller
         $user->language_id = $request->language_id;
         $user->save();
 
+        $message = "Successfully updated User!";
+
+        event(new EmailConfirmationEvent($message, $request->email));
+
         Session::flash('message', 'Successfully updated User!');
 
         return FacadesView::make('users.index')
