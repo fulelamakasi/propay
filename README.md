@@ -48,5 +48,7 @@ This project is a user management application for Propay Developer Tech.
 - user_interests: http://www.propay.local/user_interest
 - users: http://www.propay.local/users
 
-
+# Functionality of the application
+- post login the application allows you to perform crud function for all models
+- 
 
