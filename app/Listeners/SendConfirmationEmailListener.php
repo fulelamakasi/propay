@@ -15,6 +15,6 @@ class SendConfirmationEmailListener
      */
     public function handle(EmailConfirmationEvent $event)
     {
-        SendConfirmationEmailJob::dispatch($event->message, $event->toEmail);
+        SendConfirmationEmailJob::dispatch($event->user, $event->newUser);
     }
 }

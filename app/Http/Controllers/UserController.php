@@ -75,11 +75,7 @@ class UserController extends Controller
 
         $user->save();
 
-        $authUser = Auth::user();
-
-        $message = "User ($authUser->name) has Successfully updated User ($user->name)!";
-        
-        event(new EmailConfirmationEvent($message, $user->email));
+        event(new EmailConfirmationEvent(Auth::user(), $user));
 
         Session::flash('message', 'Successfully created User!');
 
@@ -160,11 +156,7 @@ class UserController extends Controller
         $user->language_id = $request->language_id;
         $user->save();
 
-        $authUser = Auth::user();
-
-        $message = "User ($authUser->name) has Successfully updated User ($user->name)!";
-
-        event(new EmailConfirmationEvent($message, $request->email));
+        event(new EmailConfirmationEvent(Auth::user(), $user));
 
         Session::flash('message', 'Successfully updated User!');
 

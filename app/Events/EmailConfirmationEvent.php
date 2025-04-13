@@ -9,17 +9,17 @@ class EmailConfirmationEvent
 {
     use Dispatchable, SerializesModels;
 
-    public $message;
-    public $toEmail;
+    public $user;
+    public $newUser;
     /**
      * Create a new event instance.
-     * @param string $message
-     * @param string $toEmail
+     * @param object $user
+     * @param object $newUser
      */
-    public function __construct(string $message, string $toEmail)
+    public function __construct(object $user, object $newUser)
     {
-        $this->message = $message;
-        $this->toEmail = $toEmail;
+        $this->user = $user;
+        $this->newUser = $newUser;
     }
 
 }
