@@ -50,5 +50,5 @@ This project is a user management application for Propay Developer Tech.
 
 # Functionality of the application
 - post login the application allows you to perform crud function for all models
-- 
+
 
