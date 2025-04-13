@@ -29,6 +29,7 @@ class UserSeeder extends Seeder
             'language_id' => $language->id,
             'email' => 'admin@propay.com',
             'password' => Hash::make('12345678'),
+            'created_at' => date('Y-m-d H:i:s'),
         ]);
 
         $language = Language::firstOrFail();
@@ -42,6 +43,7 @@ class UserSeeder extends Seeder
             'language_id' => $language->id,
             'email' => 'test@propay.com',
             'password' => Hash::make('12345678'),
+            'created_at' => date('Y-m-d H:i:s'),
         ]);
 
     }

@@ -15,11 +15,11 @@ class InterestSeeder extends Seeder
     public function run(): void
     {
         $interests = [
-            ['name' => Str::random(10)],
-            ['name' => Str::random(10)],
-            ['name' => Str::random(10)],
-            ['name' => Str::random(10)],
-            ['name' => Str::random(10)],
+            ['name' => Str::random(10), 'created_at' => date('Y-m-d H:i:s'),],
+            ['name' => Str::random(10), 'created_at' => date('Y-m-d H:i:s'),],
+            ['name' => Str::random(10), 'created_at' => date('Y-m-d H:i:s'),],
+            ['name' => Str::random(10), 'created_at' => date('Y-m-d H:i:s'),],
+            ['name' => Str::random(10), 'created_at' => date('Y-m-d H:i:s'),],
         ];
 
         DB::table('interests')->insert($interests);

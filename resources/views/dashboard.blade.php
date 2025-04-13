@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Propay App</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -63,7 +63,7 @@
                                 </span>
                             </span>
                             <span>
-                                Languages <u><a href="{{ URL::to('languages') }}">View All languages</a></u> 
+                                <u><a href="{{ URL::to('languages') }}">View All Languages</a></u> 
                             </span>
                         </li>
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
@@ -73,7 +73,7 @@
                                 </span>
                             </span>
                             <span>
-                                Interests <u><a href="{{ URL::to('interests') }}">View All interests</a></u> 
+                                <u><a href="{{ URL::to('interests') }}">View All Interests</a></u> 
                             </span>
                         </li>
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:top-1/2 before:bottom-0 before:left-[0.4rem] before:absolute">
@@ -83,7 +83,7 @@
                                 </span>
                             </span>
                             <span>
-                                Users <u><a href="{{ URL::to('users') }}">View All users</a></u> 
+                                <u><a href="{{ URL::to('users') }}">View All Users</a></u> 
                             </span>
                         </li>
                         <li class="flex items-center gap-4 py-2 relative before:border-l before:border-[#e3e3e0] dark:before:border-[#3E3E3A] before:bottom-1/2 before:top-0 before:left-[0.4rem] before:absolute">
@@ -92,7 +92,7 @@
                                     <span class="rounded-full bg-[#dbdbd7] dark:bg-[#3E3E3A] w-1.5 h-1.5"></span>
                                 </span>
                             </span>
-                                User Interests <u><a href="{{ URL::to('user_interest') }}">View All User Interest</a></u>
+                                <u><a href="{{ URL::to('user_interest') }}">View All User Interest</a></u>
                             </span>
                         </li>
                     </ul>

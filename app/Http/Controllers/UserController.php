@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\View as FacadesView;
 use Illuminate\Support\Facades\Hash;
 use App\Events\EmailConfirmationEvent;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -74,10 +75,7 @@ class UserController extends Controller
 
         $user->save();
 
-        $message = "Your confirmation code is: 123456";
-        $email = "user@example.com";
-        
-        event(new EmailConfirmationEvent($message, $email));
+        event(new EmailConfirmationEvent(Auth::user(), $user));
 
         Session::flash('message', 'Successfully created User!');
 
@@ -157,6 +155,8 @@ class UserController extends Controller
         $user->birth_date = $this->extractBirthdateFromID($request->id_number);
         $user->language_id = $request->language_id;
         $user->save();
+
+        event(new EmailConfirmationEvent(Auth::user(), $user));
 
         Session::flash('message', 'Successfully updated User!');
 
@@ -250,5 +250,4 @@ class UserController extends Controller
         
         return $validated;
     }
-
 }

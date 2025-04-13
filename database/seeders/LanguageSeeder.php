@@ -91,6 +91,7 @@ class LanguageSeeder extends Seeder
         foreach ($languagesArray as $language) {
             DB::table('languages')->insert([
                 'name' => $language,
+                'created_at' => date('Y-m-d H:i:s'),
             ]);
         }
     }

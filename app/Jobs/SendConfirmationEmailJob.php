@@ -14,19 +14,19 @@ class SendConfirmationEmailJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $message;
-    protected $toEmail;
+    protected $user;
+    protected $newUser;
 
     /**
      * Create a new job instance.
      *
-     * @param string $message
-     * @param string $toEmail
+     * @param object $user
+     * @param object $newUser
      */
-    public function __construct(string $message, string $toEmail)
+    public function __construct(object $user, object $newUser)
     {
-        $this->message = $message;
-        $this->toEmail = $toEmail;
+        $this->user = $user;
+        $this->newUser = $newUser;
     }
 
     /**
@@ -34,7 +34,7 @@ class SendConfirmationEmailJob implements ShouldQueue
      */
     public function handle(): void
     {
-        Mail::to($this->toEmail)
-            ->send(new ConfirmationEmail($this->message));
+        Mail::to($this->newUser->email)
+            ->send(new ConfirmationEmail($this->newUser, $this->user));
     }
 }

@@ -10,16 +10,18 @@ class ConfirmationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $message;
+    public $user;
+    public $newUser;
 
     /**
      * Create a new message instance.
      *
-     * @param string $message
+     * @param object $message
      */
-    public function __construct(string $message)
+    public function __construct(object $user, object $newUser)
     {
-        $this->message = $message;
+        $this->user = $user;
+        $this->newUser = $newUser;
     }
 
     /**
@@ -29,8 +31,8 @@ class ConfirmationEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Confirmation Email')
+        return $this->subject('User Creation/Modification Email')
                     ->view('emails.confirmation')
-                    ->with(['messageBody' => $this->message]);
+                    ->with(['user' => $this->user, 'newUser' => $this->newUser]);
     }
 }
